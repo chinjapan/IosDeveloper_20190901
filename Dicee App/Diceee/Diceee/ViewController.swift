@@ -13,20 +13,28 @@ class ViewController: UIViewController {
     var randomIndex1 :Int = 0
     var randomIndex2 :Int = 0
     
-    @IBOutlet weak var dicelImageCel2: UIImageView!
+    let diceArray = ["dice1","dice2","dice3","dice4","dice5","dice6"]
+    
+    @IBOutlet weak var dicelmageView2: UIImageView!
     @IBOutlet weak var dicelmageView1: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        updateDiceImages()
     }
 
     @IBAction func rollButtonPressed(_ sender: UIButton) {
-        
+        updateDiceImages()
+    }
+    
+    func updateDiceImages() {
         randomIndex1 = Int(arc4random_uniform(6))
         randomIndex2 = Int(arc4random_uniform(6))
         
-        print(randomIndex1)
-        
+        dicelmageView1.image = UIImage(named: diceArray[randomIndex1])
+        dicelmageView2.image = UIImage(named: diceArray[randomIndex2])
+    }
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        updateDiceImages()
     }
     
 }
