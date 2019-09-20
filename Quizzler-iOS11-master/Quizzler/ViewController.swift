@@ -54,14 +54,14 @@ class ViewController: UIViewController {
             questionLabel.text = allQuestion.list[questionNumber].questionText
         }
         else {
-            let alert = UIAlertController(title: "Awesome", message: "You'vee are finished all question, do you restart?", preferredStyle: .alert)
+            let alert =  UIAlertController(title: "Awesome", message: "You have finished all question,Do you want to restart", preferredStyle: .alert)
             
-            let restartAction = UIAlertAction(title: "Restart", style: .default, handler:
-               {(UIAlertAction) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Restart", comment: "Default action"), style: .default, handler: { (UIAlertAction) in
                 self.startOver()
-            })
+            }))
+            present(alert, animated: true, completion: nil)
             
-            alert.addAction(restartAction)
+            
             
             
             
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     
     
     func startOver() {
-       
+       questionNumber = 0
     }
     
 
